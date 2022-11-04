@@ -1,3 +1,4 @@
+/* SECTION Image classes */
 .bg-image {
     background-image: url('https://images.unsplash.com/photo-1636063522013-8d8fbfe8fcdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1494&q=80');
     background-position: center;
@@ -5,6 +6,101 @@
     min-height: 100vh;
 }
 
-.button-img {
-    height: 150px;
+.clickable-img {
+    background-image: url('https://media1.giphy.com/media/fdG07xF24smvBim16E/giphy.gif?cid=790b76112c4c7524e5f9d4092abb2553acdf350c582ec393&rid=giphy.gif&ct=s');
+    background-position: center;
+    background-size: contain;
+    height: 500px;
+    cursor: pointer;
+}
+
+.cucumber-img-btn {
+    background-image: url('https://images.unsplash.com/flagged/photo-1579410137904-03cda8069b07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80');
+    background-position: center;
+    background-size: cover;
+    height: 120px;
+    cursor: pointer;
+}
+
+.massage-img-btn {
+    background-image: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');
+    background-position: center;
+    background-size: cover;
+    height: 120px;
+    cursor: pointer;
+}
+
+.cleaner-img-btn {
+    background-image: url('https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+    background-position: center;
+    background-size: cover;
+    height: 120px;
+    cursor: pointer;
+}
+
+.nanny-img-btn {
+    background-image: url('https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');
+    background-position: center;
+    background-size: cover;
+    height: 120px;
+    cursor: pointer;
+}
+
+.square {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    top: 100px;
+
+}
+
+.square2 {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    left: 300px;
+}
+
+.square3 {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    margin: auto auto;
+    bottom: 50px;
+}
+
+/* SECTION colors */
+
+.bg-pink {
+    background-color: pink;
+    opacity: .4;
+}
+
+/* SECTION animations */
+.disappear {
+    animation: show-count 1s forwards linear;
+    color: aqua;
+    opacity: 0;
+}
+
+@keyframes show-count {
+    0% {
+        opacity: 1;
+        transform: translate(20px, 20px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-20px, -20px);
+    }
+}
+
+/* SECTION utility */
+
+.text-shadow {
+    text-shadow: 1px 1px 3px rgb(73, 72, 72);
+}
+
+.text-shadow-light {
+    text-shadow: 1px 1px 2px whitesmoke;
 }

@@ -1,10 +1,21 @@
 // SECTION variables & data
 
-let energy = 50;
+let energy = 1000;
 let masks = 0;
+let massages = 0;
+let housecleaners = 0;
+let nannies = 0;
 
 let energyCountElem = document.getElementById('energy-count');
 let maskCountElem = document.getElementById('mask-count');
+let massageCountElem = document.getElementById('massage-count');
+let cleanerCountElem = document.getElementById('cleaner-count');
+let nannyCountElem = document.getElementById('nanny-count');
+
+let cleanerPriceElem = document.getElementById('cleaner-price');
+let nannyPriceElem = document.getElementById('nanny-price');
+
+let animatedCounterElem = document.getElementById('animated-counter');
 
 
 
@@ -26,51 +37,135 @@ let clickUpgrades = [
 let automaticUpgrades = [
     {
         name: 'hire-housecleaner',
-        price: 200,
+        price: 400,
         quantity: 0,
-        multiplier: 2
+        multiplier: 50
     },
     {
-        name: 'hire-babysitter',
-        price: 80,
+        name: 'hire-nanny',
+        price: 1000,
         quantity: 0,
-        multiplier: 5
+        multiplier: 150
     }
 ];
 
-let cucumberMask = clickUpgrades[0];
+let cucumberMaskObj = clickUpgrades[0];
+let massageObj = clickUpgrades[1];
+let housecleanerObj = automaticUpgrades[0];
+let nannyObj = automaticUpgrades[1];
+
+let animationPlacementClasses = ['square', 'square2', 'square3'];
 
 // SECTION game logic
 
 function mineEnergy() {
-    if (cucumberMask.quantity > 0) {
-        energy += 1 + cucumberMask.multiplier * cucumberMask.quantity;
+    if (cucumberMaskObj.quantity > 0 && massageObj.quantity > 0) {
+        energy += 1 + (cucumberMaskObj.multiplier * cucumberMaskObj.quantity) + (massageObj.multiplier * massageObj.quantity);
+    } else if (cucumberMaskObj.quantity > 0) {
+        energy += 1 + (cucumberMaskObj.multiplier * cucumberMaskObj.quantity);
+    } else if (massageObj.quantity > 0) {
+        energy += 1 + massageObj.multiplier * massageObj.quantity;
     } else {
         energy++
     }
 
     //console.log(energy)
-    drawStats()
-}
-
-
-// SECTION draw to page
-
-function drawStats() {
-    energyCountElem.innerText = energy;
-    maskCountElem.innerText = masks;
+    drawToPage()
+    drawCount()
 }
 
 function buyMask() {
     if (energy >= 20) {
         energy -= 20;
         masks++
-        cucumberMask.quantity++
+        cucumberMaskObj.quantity++
     } else {
         window.alert('Not enough energy to buy cucumber mask!')
     }
-    drawStats()
+    drawToPage()
 }
 
-drawStats()
+function buyMassage() {
+    if (energy >= 100) {
+        energy -= 100;
+        massages++
+        massageObj.quantity++
+    } else {
+        window.alert('Not enough energy to buy a massage!')
+    }
+    drawToPage()
+}
+
+function hireCleaner() {
+    if (energy >= housecleanerObj.price) {
+        energy -= housecleanerObj.price;
+        housecleaners++
+        housecleanerObj.quantity++
+        housecleanerObj.price += 100;
+        let autoCollect = setInterval(collectAutoUpgrades, 3000);
+        drawToPage()
+        setTimeout(() => {
+            clearInterval(autoCollect);
+            housecleanerObj.quantity = 0;
+            housecleaners = 0;
+            console.log(housecleanerObj);
+            drawToPage()
+        }, 10000);
+    } else {
+        window.alert('Not enough energy to hire a house cleaner!')
+    }
+}
+
+function hireNanny() {
+    if (energy >= nannyObj.price) {
+        energy -= nannyObj.price;
+        nannies++
+        nannyObj.quantity++
+        nannyObj.price += 150;
+        let autoCollect = setInterval(collectAutoUpgrades, 3000);
+        drawToPage()
+        setTimeout(() => {
+            clearInterval(autoCollect);
+            nannyObj.quantity = 0;
+            nannies = 0;
+            console.log(housecleanerObj);
+            drawToPage()
+        }, 20000);
+
+    } else {
+        window.alert('Not enough energy to hire a nanny!')
+    }
+}
+
+function collectAutoUpgrades() {
+    automaticUpgrades.forEach(upgrade => {
+        energy += upgrade.quantity * upgrade.multiplier;
+    })
+    drawToPage()
+}
+
+// SECTION draw to page
+
+function drawToPage() {
+    energyCountElem.innerText = energy;
+    maskCountElem.innerText = masks;
+    massageCountElem.innerText = massages;
+    cleanerCountElem.innerText = housecleaners;
+    nannyCountElem.innerText = nannies;
+
+    cleanerPriceElem.innerText = housecleanerObj.price + 'nrg';
+    nannyPriceElem.innerText = nannyObj.price + 'nrg';
+}
+
+function drawCount() {
+    let randNum = Math.floor(Math.random() * animationPlacementClasses.length);
+    animatedCounterElem.innerHTML = `<div class="col-1 d-flex align-items-center ${animationPlacementClasses[randNum]} disappear">
+    <h1 class="text-light text-shadow text-center p-3 rounded-circle bg-dark">
+        +${1 + (cucumberMaskObj.quantity * cucumberMaskObj.multiplier) + (massageObj.quantity * massageObj.multiplier)}</h1>
+</div>`
+    console.log(animationPlacementClasses[randNum])
+}
+
+
+drawToPage()
 //console.log(clickUpgrades[0])

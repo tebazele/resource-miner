@@ -17,42 +17,91 @@
 <body>
     <main class="container-fluid bg-image">
         <!-- SECTION game title -->
-        <section class="row text-center p-4">
+        <section class="row text-center p-4 bg-pink">
             <div class="col-12 text-light">
-                <h1>Me Time! Renew Your Energy</h1>
+                <h1 class="text-shadow">Me Time! Renew Your Energy</h1>
             </div>
         </section>
 
-        <!-- SECTION stats and store-->
+        <!-- SECTION stats -->
         <section class="row p-4">
             <div class="col-6">
-                <div class="card p-2">
+                <div class="card p-2 mt-2">
                     <h3>Energy: <span id="energy-count">0</span></h3>
                     <h3>Cucumber Masks: <span id="mask-count">0</span></h3>
+                    <h3>Massages: <span id="massage-count">0</span></h3>
+                    <h3>House Cleaners: <span id="cleaner-count">0</span></h3>
+                    <h3>Nannies: <span id="nanny-count">0</span></h3>
                 </div>
 
             </div>
+            <!-- SECTION store -->
             <div class="col-6">
-                <section class="row">
-                    <div class="col-12">
+                <section class="row justify-content-center card p-3 mt-2">
+                    <div class="col-12 p-3 text-center">
                         <h3>Store</h3>
                     </div>
-                    <div class="col-6">
-                        <img src="https://images.unsplash.com/flagged/photo-1579410137904-03cda8069b07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                            alt="cucumber button" class="img-fluid button-img" onclick="buyMask()">
-                    </div>
+                    <section class="row justify-content-start p-3 align-items-end">
+                        <div class="col-2 cucumber-img-btn d-flex align-items-end text-center justify-content-center"
+                            onclick="buyMask()">
+                            <h3 class="text-shadow-light">20nrg</h3>
+                        </div>
+                        <div class="col-4">
+                            <p>Buy a cucumber mask to get 2 energy with each click!</p>
+                        </div>
+
+                        <div class="col-2 massage-img-btn d-flex align-items-end justify-content-center text-center"
+                            onclick="buyMassage()">
+                            <h3 class="text-shadow-light">100nrg</h3>
+                        </div>
+                        <div class="col-4">
+                            <p>Buy a massage to get +5 energy with each click!</p>
+                        </div>
+                    </section>
+                    <section class="row justify-content-start p-3 align-items-end">
+                        <div class="col-2 cleaner-img-btn d-flex align-items-end justify-content-center"
+                            onclick="hireCleaner()">
+                            <h3 id="cleaner-price" class="text-center text-shadow-light">400 nrg</h3>
+                        </div>
+                        <div class="col-4">
+                            <p>Hire a house cleaner to get an automatic 50 energy added every 3 seconds for 10 seconds!
+                            </p>
+                        </div>
+                        <div class="col-2 nanny-img-btn d-flex align-items-end" onclick='hireNanny()'>
+                            <h3 id="nanny-price" class="text-center text-shadow text-light">1000 nrg</h3>
+                        </div>
+                        <div class="col-4">
+                            <p>Hire a nanny to get an automatic 150 energy added every 3 seconds for 20 seconds! </p>
+                        </div>
+                    </section>
                 </section>
 
             </div>
         </section>
 
         <!-- SECTION clickable object -->
-        <section class="row">
-            <div class="col-12 text-center">
-                <img src="https://media1.giphy.com/media/fdG07xF24smvBim16E/giphy.gif?cid=790b76112c4c7524e5f9d4092abb2553acdf350c582ec393&rid=giphy.gif&ct=s"
-                    class="img-fluid" onclick="mineEnergy()">
+        <section class="row justify-content-center">
+            <div class="col-3 clickable-img" onclick="mineEnergy()">
+                <!-- ANCHOR appear and animate with each click -->
+                <section class="row" id="animated-counter">
+                    <!-- <div class="col-1 d-flex align-items-center square rounded-circle">
+                        <h1 class="text-light text-shadow bg-dark rounded-circle text-center p-3">
+                            +1</h1>
+                    </div>
+                    <div class="col-1 d-flex align-items-center square2 rounded-circle" id="animated-counter2">
+                        <h1 class="text-light text-shadow bg-dark rounded-circle text-center p-3">
+                            +1</h1>
+                    </div>
+                    <div class="col-1 d-flex align-items-center square3 rounded-circle" id="animated-counter2">
+                        <h1 class="text-light text-shadow bg-dark rounded-circle text-center p-3">
+                            +1</h1>
+                    </div> -->
+                </section>
             </div>
+
         </section>
+
+
     </main>
 
     <!-- Bootstrap JavaScript Libraries -->
