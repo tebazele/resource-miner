@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Resource Miner</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+    <main class="container-fluid bg-image">
+        <!-- SECTION game title -->
+        <section class="row text-center p-4">
+            <div class="col-12 text-light">
+                <h1>Me Time! Renew Your Energy</h1>
+            </div>
+        </section>
+
+        <!-- SECTION stats and store-->
+        <section class="row p-4">
+            <div class="col-6">
+                <div class="card p-2">
+                    <h3>Energy: <span id="energy-count">0</span></h3>
+                    <h3>Cucumber Masks: <span id="mask-count">0</span></h3>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <section class="row">
+                    <div class="col-12">
+                        <h3>Store</h3>
+                    </div>
+                    <div class="col-6">
+                        <img src="https://images.unsplash.com/flagged/photo-1579410137904-03cda8069b07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                            alt="cucumber button" class="img-fluid button-img" onclick="buyMask()">
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- SECTION clickable object -->
+        <section class="row">
+            <div class="col-12 text-center">
+                <img src="https://media1.giphy.com/media/fdG07xF24smvBim16E/giphy.gif?cid=790b76112c4c7524e5f9d4092abb2553acdf350c582ec393&rid=giphy.gif&ct=s"
+                    class="img-fluid" onclick="mineEnergy()">
+            </div>
+        </section>
+    </main>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <script src="/main.js"></script>
+</body>
+
+</html>
