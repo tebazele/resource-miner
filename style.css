@@ -46,6 +46,11 @@
     cursor: pointer;
 }
 
+.empty-box {
+    height: 250px;
+    width: 500px;
+}
+
 .square {
     height: 200px;
     width: 200px;

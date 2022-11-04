@@ -16,6 +16,7 @@ let cleanerPriceElem = document.getElementById('cleaner-price');
 let nannyPriceElem = document.getElementById('nanny-price');
 
 let animatedCounterElem = document.getElementById('animated-counter');
+let showAutoCollectElem = document.getElementById('show-auto-collect');
 
 
 
@@ -140,6 +141,18 @@ function hireNanny() {
 function collectAutoUpgrades() {
     automaticUpgrades.forEach(upgrade => {
         energy += upgrade.quantity * upgrade.multiplier;
+        if (housecleanerObj.quantity > 0 && nannyObj.quantity > 0) {
+            showAutoCollectElem.innerHTML = `
+            <img class="img-fluid disappear" src="/1.png">
+            <img class="img-fluid disappear" src="/2.png">`
+        } else if (housecleanerObj.quantity > 0) {
+            showAutoCollectElem.innerHTML = `
+            <img class="img-fluid disappear" src="/1.png">
+            `
+        } else if (nannyObj.quantity > 0) {
+            showAutoCollectElem.innerHTML = `
+            <img class="img-fluid disappear" src="/2.png">`
+        }
     })
     drawToPage()
 }
