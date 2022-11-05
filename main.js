@@ -149,15 +149,15 @@ function collectAutoUpgrades() {
         energy += upgrade.quantity * upgrade.multiplier;
         if (housecleanerObj.quantity > 0 && nannyObj.quantity > 0) {
             showAutoCollectElem.innerHTML = `
-            <img class="img-fluid disappear" src="/1.png">
-            <img class="img-fluid disappear" src="/2.png">`
+            <h4 class='grandstander disappear'>${housecleanerObj.multiplier} energy</h4><img class="img-fluid disappear" src="/1.png">
+            <h4 class='grandstander disappear'>${nannyObj.multiplier} energy</h4><img class="img-fluid disappear" src="/2.png">`
         } else if (housecleanerObj.quantity > 0) {
             showAutoCollectElem.innerHTML = `
-            <img class="img-fluid disappear" src="/1.png">
+            <h4 class='grandstander disappear'>${housecleanerObj.multiplier} energy</h4><img class="img-fluid disappear" src="/1.png">
             `
         } else if (nannyObj.quantity > 0) {
             showAutoCollectElem.innerHTML = `
-            <img class="img-fluid disappear" src="/2.png">`
+            <h4 class='grandstander disappear'>${nannyObj.multiplier} energy</h4><img class="img-fluid disappear" src="/2.png">`
         }
     })
 
