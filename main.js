@@ -5,6 +5,7 @@ let masks = 0;
 let massages = 0;
 let housecleaners = 0;
 let nannies = 0;
+let gameSeconds = 90;
 
 let energyCountElem = document.getElementById('energy-count');
 let maskCountElem = document.getElementById('mask-count');
@@ -17,6 +18,11 @@ let nannyPriceElem = document.getElementById('nanny-price');
 
 let animatedCounterElem = document.getElementById('animated-counter');
 let showAutoCollectElem = document.getElementById('show-auto-collect');
+
+let toolTipElem = document.getElementById('tool-tip');
+let energyFlashElem = document.getElementById('energy-background');
+
+let timerElem = document.getElementById('timer');
 
 
 
@@ -40,13 +46,13 @@ let automaticUpgrades = [
         name: 'hire-housecleaner',
         price: 400,
         quantity: 0,
-        multiplier: 50
+        multiplier: 250
     },
     {
         name: 'hire-nanny',
         price: 1000,
         quantity: 0,
-        multiplier: 150
+        multiplier: 400
     }
 ];
 
@@ -55,7 +61,7 @@ let massageObj = clickUpgrades[1];
 let housecleanerObj = automaticUpgrades[0];
 let nannyObj = automaticUpgrades[1];
 
-let animationPlacementClasses = ['square', 'square2', 'square3'];
+let animationPlacementClasses = ['square', 'square2', 'square3', 'square4'];
 
 // SECTION game logic
 
@@ -154,6 +160,45 @@ function collectAutoUpgrades() {
             <img class="img-fluid disappear" src="/2.png">`
         }
     })
+
+    energyFlashElem.classList.add('energy-bg');
+
+    drawToPage()
+    setTimeout(() => { energyFlashElem.classList.remove('energy-bg'); }, 1000)
+}
+
+
+function timer() {
+    gameSeconds--;
+    if (gameSeconds < 0) {
+        timerElem.innerText = 0
+    } else {
+        timerElem.innerText = gameSeconds;
+    }
+}
+
+function startGame() {
+    let timerInterval = setInterval(timer, 1000);
+    setTimeout(() => {
+        clearInterval(timerInterval);
+        endGame()
+    }, 92000);
+}
+
+function endGame() {
+    window.alert(`Game over! Cindy has earned ${energy} energy points!`)
+    energy = 0;
+    cucumberMaskObj.quantity = 0;
+    masks = 0;
+    massageObj.quantity = 0;
+    massages = 0;
+    housecleanerObj.price = 400;
+    housecleanerObj.quantity = 0;
+    nannyObj.price = 1000;
+    nannyObj.quantity = 0;
+    gameSeconds = 90;
+    timerElem.innerText = gameSeconds;
+
     drawToPage()
 }
 
@@ -166,8 +211,8 @@ function drawToPage() {
     cleanerCountElem.innerText = housecleaners;
     nannyCountElem.innerText = nannies;
 
-    cleanerPriceElem.innerText = housecleanerObj.price + 'nrg';
-    nannyPriceElem.innerText = nannyObj.price + 'nrg';
+    cleanerPriceElem.innerText = 'Cost: ' + housecleanerObj.price + ' energy';
+    nannyPriceElem.innerText = 'Cost: ' + nannyObj.price + ' energy';
 }
 
 function drawCount() {
@@ -178,6 +223,12 @@ function drawCount() {
 </div>`
     console.log(animationPlacementClasses[randNum])
 }
+
+function closeToolTip() {
+    toolTipElem.style.opacity = 0;
+}
+
+
 
 
 drawToPage()
