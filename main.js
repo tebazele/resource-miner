@@ -7,24 +7,7 @@ let housecleaners = 0;
 let nannies = 0;
 let gameSeconds = 90;
 
-let energyCountElem = document.getElementById('energy-count');
-let maskCountElem = document.getElementById('mask-count');
-let massageCountElem = document.getElementById('massage-count');
-let cleanerCountElem = document.getElementById('cleaner-count');
-let nannyCountElem = document.getElementById('nanny-count');
-
-let cleanerPriceElem = document.getElementById('cleaner-price');
-let nannyPriceElem = document.getElementById('nanny-price');
-
-let animatedCounterElem = document.getElementById('animated-counter');
-let showAutoCollectElem = document.getElementById('show-auto-collect');
-
-let toolTipElem = document.getElementById('tool-tip');
-let energyFlashElem = document.getElementById('energy-background');
-
 let timerElem = document.getElementById('timer');
-
-
 
 let clickUpgrades = [
     {
@@ -77,6 +60,9 @@ function mineEnergy() {
     }
 
     //console.log(energy)
+    // let cindy = document.getElementById('cindy');
+    // cindy.classList.add('grow-cindy');
+    // setTimeout(() => { cindy.classList.remove('grow-cindy'); }, 500);
     drawToPage()
     drawCount()
 }
@@ -89,6 +75,8 @@ function buyMask() {
     } else {
         window.alert('Not enough energy to buy cucumber mask!')
     }
+    // cucumberMaskObj.classList.add('grow');
+    // setTimeout(() => { cucumberMaskObj.classList.remove('grow') }, 500);
     drawToPage()
 }
 
@@ -145,6 +133,7 @@ function hireNanny() {
 }
 
 function collectAutoUpgrades() {
+    let showAutoCollectElem = document.getElementById('show-auto-collect');
     automaticUpgrades.forEach(upgrade => {
         energy += upgrade.quantity * upgrade.multiplier;
         if (housecleanerObj.quantity > 0 && nannyObj.quantity > 0) {
@@ -161,6 +150,7 @@ function collectAutoUpgrades() {
         }
     })
 
+    let energyFlashElem = document.getElementById('energy-background');
     energyFlashElem.classList.add('energy-bg');
 
     drawToPage()
@@ -205,11 +195,20 @@ function endGame() {
 // SECTION draw to page
 
 function drawToPage() {
+    let energyCountElem = document.getElementById('energy-count');
+    let maskCountElem = document.getElementById('mask-count');
+    let massageCountElem = document.getElementById('massage-count');
+    let cleanerCountElem = document.getElementById('cleaner-count');
+    let nannyCountElem = document.getElementById('nanny-count');
+
     energyCountElem.innerText = energy;
     maskCountElem.innerText = masks;
     massageCountElem.innerText = massages;
     cleanerCountElem.innerText = housecleaners;
     nannyCountElem.innerText = nannies;
+
+    let cleanerPriceElem = document.getElementById('cleaner-price');
+    let nannyPriceElem = document.getElementById('nanny-price');
 
     cleanerPriceElem.innerText = 'Cost: ' + housecleanerObj.price + ' energy';
     nannyPriceElem.innerText = 'Cost: ' + nannyObj.price + ' energy';
@@ -217,6 +216,7 @@ function drawToPage() {
 
 function drawCount() {
     let randNum = Math.floor(Math.random() * animationPlacementClasses.length);
+    let animatedCounterElem = document.getElementById('animated-counter');
     animatedCounterElem.innerHTML = `<div class="col-1 d-flex align-items-center ${animationPlacementClasses[randNum]} disappear">
     <h1 class="text-light text-shadow text-center p-3 rounded-circle bg-dark">
         +${1 + (cucumberMaskObj.quantity * cucumberMaskObj.multiplier) + (massageObj.quantity * massageObj.multiplier)}</h1>
@@ -225,6 +225,7 @@ function drawCount() {
 }
 
 function closeToolTip() {
+    let toolTipElem = document.getElementById('tool-tip');
     toolTipElem.style.opacity = 0;
 }
 
