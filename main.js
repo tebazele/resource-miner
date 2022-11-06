@@ -1,6 +1,6 @@
 // SECTION variables & data
 
-let energy = 1000;
+let energy = 0;
 let masks = 0;
 let massages = 0;
 let housecleaners = 0;
@@ -172,7 +172,7 @@ function startGame() {
     setTimeout(() => {
         clearInterval(timerInterval);
         endGame()
-    }, 92000);
+    }, 91500);
 }
 
 function endGame() {
